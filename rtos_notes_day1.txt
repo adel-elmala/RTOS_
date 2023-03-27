@@ -1,0 +1,76 @@
+
+deterministic  :  know what happens at each point in time
+
+responsiveness : how fast can i respond to external events
+
+
+system types:
+1- super loop system
+    while(1)
+    {
+        // code 
+    }
+    pros: deterministic , simple code , minimal hardware resoursces 
+    cons:   not responsiveness , high power consumption
+
+
+
+2- background-foreground system (superloop + interrupt)
+    pros: more responsiveness
+    cons: not deterministic , more complex to code , needs hardware that supports interrupts
+
+
+3- rtos
+ pros: responsiveness + deterministic
+ deterministic -> periodicity
+ responsiveness -> (by using interrupts as a a notification)
+rt/os
+
+os : operating system -> (used for multitasking)
+tr ( real time ) : correct function at a correct time
+
+real time types:
+1- hard real time:
+ when the deadline is not met -> will result in a life losses 
+    ex: military systems - airbag
+    tolarance  : < 5-10 %
+2- firm real time
+ when the deadline is not met -> will result in a money losses 
+    ex: bitcoins
+    tolarance  : < 10-40 %
+
+3- soft real time
+ when the deadline is not met -> will not cause human losses or money losses 
+    tolarance  : > 40 %
+
+------------------------------------------------
+
+rtos composition:
+
+1- task:
+    - job that has to be done (independently) of other tasks of the system
+    - and each task thinks it's the only one running in the system and has the cpu all to itself
+    - a task physically is:
+        - c function
+        - timing charactaristics
+        - priority
+        - stack 
+        - TCB (task control block) (storge)
+        -  context switching
+    * timing charactaristics *
+    - periodicity:
+    - execution time:either uisng a a timer or (pin  + osciliscope) or assembly
+    - deadline : deadline  <= periodicity
+    - maximum blocking time:
+        each task has specific space to store pc,sp,gpr,...
+    --- "dispatcher" is responsible to context switch btweent tasks
+
+2- scheduler: is an algorithm that decides which task to start running at a given point in time 
+                then the "dispatcher" will do the actual context switch
+
+
+
+3- SYSTICK: is configurable based on the design
+    it should be less or equal to the minimum tasks' periodicities
+
+
