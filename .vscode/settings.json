@@ -2,6 +2,8 @@
   "files.associations": {
     "queue.h": "c",
     "freertos.h": "c",
-    "dio_reg.h": "c"
+    "dio_reg.h": "c",
+    "7seg_interface.h": "c",
+    "dio_interface.h": "c"
   }
 }

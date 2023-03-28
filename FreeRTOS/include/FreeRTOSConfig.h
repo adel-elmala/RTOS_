@@ -72,15 +72,17 @@
 #define configUSE_IDLE_HOOK 0
 #define configUSE_TICK_HOOK 0
 #define configCPU_CLOCK_HZ ((unsigned long)16000000)
-#define configTICK_RATE_HZ ((portTickType)5)
-#define configMAX_PRIORITIES (5)
+// #define configTICK_RATE_HZ ((portTickType)100)
+#define configTICK_RATE_HZ ((portTickType)2000)
+#define configMAX_PRIORITIES (8)
 #define configMINIMAL_STACK_SIZE ((unsigned short)85)
-#define configTOTAL_HEAP_SIZE ((size_t)(1024))
+#define configTOTAL_HEAP_SIZE ((size_t)(1200))
 #define configMAX_TASK_NAME_LEN (8)
 #define configUSE_TRACE_FACILITY 0
 #define configUSE_16_BIT_TICKS 1
 #define configIDLE_SHOULD_YIELD 0
 #define configQUEUE_REGISTRY_SIZE 0
+#define configUSE_COUNTING_SEMAPHORES 1
 
 /* Co-routine definitions. */
 #define configUSE_CO_ROUTINES 0

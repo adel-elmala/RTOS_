@@ -7,7 +7,7 @@ mcu1_mcal =  ./MCAL/GIE/GIE.c ./MCAL/DIO/dio.c
 mcu1_app = 
 
 
-SRC = main.c $(mcu1_app) $(mcu1_rtos) $(mcu1_hal) $(mcu1_mcal) $(mcu1_lib)
+SRC = main2.c $(mcu1_app) $(mcu1_rtos) $(mcu1_hal) $(mcu1_mcal) $(mcu1_lib)
 
 
 

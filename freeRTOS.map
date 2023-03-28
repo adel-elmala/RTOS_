@@ -3,9 +3,9 @@ Archive member included to satisfy reference by file (symbol)
 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
                               /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32.o (exit)
 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
-                              main.o (__do_copy_data)
+                              main2.o (__do_copy_data)
 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
-                              main.o (__do_clear_bss)
+                              main2.o (__do_clear_bss)
 /lib/avr/lib/avr5/libc.a(memcpy.o)
                               ./FreeRTOS/queue.o (memcpy)
 
@@ -25,7 +25,7 @@ Linker script and memory map
 
 LOAD /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32.o
 LOAD /lib/avr/lib/avr5/libatmega32a.a
-LOAD main.o
+LOAD main2.o
 LOAD ./FreeRTOS/tasks.o
 LOAD ./FreeRTOS/queue.o
 LOAD ./FreeRTOS/list.o
@@ -141,7 +141,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000     0x28b6
+.text           0x0000000000000000     0x2812
  *(.vectors)
  .vectors       0x0000000000000000       0x54 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32.o
                 0x0000000000000000                __vectors
@@ -220,163 +220,162 @@ END GROUP
                 0x000000000000008e                __vector_16
                 0x000000000000008e                __vector_18
                 0x000000000000008e                __vector_20
- .text          0x0000000000000092       0xb0 main.o
-                0x0000000000000092                led_task
-                0x00000000000000a4                lcd_task
-                0x00000000000000f6                sevenSeg1_task
-                0x000000000000011c                sevenSeg2_task
- .text          0x0000000000000142     0x153e ./FreeRTOS/tasks.o
-                0x0000000000000242                xTaskCreate
-                0x0000000000000466                vTaskDelete
-                0x000000000000051e                vTaskStartScheduler
-                0x0000000000000570                vTaskEndScheduler
-                0x000000000000057a                vTaskSuspendAll
-                0x0000000000000586                xTaskGetTickCount
-                0x000000000000059a                xTaskGetTickCountFromISR
-                0x00000000000005a4                uxTaskGetNumberOfTasks
-                0x00000000000005aa                pcTaskGetName
-                0x00000000000005ba                xTaskIncrementTick
-                0x00000000000007bc                xTaskResumeAll
-                0x0000000000000956                xTaskDelayUntil
-                0x00000000000009c4                vTaskDelay
-                0x00000000000009ec                xTaskCatchUpTicks
-                0x0000000000000a1c                vTaskSwitchContext
-                0x0000000000000aa2                vTaskPlaceOnEventList
-                0x0000000000000ac2                vTaskPlaceOnUnorderedEventList
-                0x0000000000000b4a                xTaskRemoveFromEventList
-                0x0000000000000ca2                vTaskRemoveFromUnorderedEventList
-                0x0000000000000dbe                vTaskSetTimeOutState
-                0x0000000000000dde                vTaskInternalSetTimeOutState
-                0x0000000000000df4                xTaskCheckForTimeOut
-                0x0000000000000e4c                vTaskMissedYield
-                0x0000000000000e54                xTaskGetCurrentTaskHandle
-                0x0000000000000e5e                uxTaskResetEventItemValue
-                0x0000000000000e8c                ulTaskGenericNotifyTake
-                0x0000000000000f6c                xTaskGenericNotifyWait
-                0x00000000000010ac                xTaskGenericNotify
-                0x0000000000001272                xTaskGenericNotifyFromISR
-                0x000000000000148a                vTaskGenericNotifyGiveFromISR
-                0x00000000000015ec                xTaskGenericNotifyStateClear
-                0x0000000000001618                ulTaskGenericNotifyValueClear
- .text          0x0000000000001680      0x858 ./FreeRTOS/queue.o
-                0x00000000000017d6                xQueueGenericReset
-                0x0000000000001866                xQueueGenericCreate
-                0x00000000000018b6                xQueueGenericSend
-                0x00000000000019e2                xQueueGenericSendFromISR
-                0x0000000000001a4a                xQueueGiveFromISR
-                0x0000000000001aa8                xQueueReceive
-                0x0000000000001bcc                xQueueSemaphoreTake
-                0x0000000000001cd8                xQueuePeek
-                0x0000000000001dfc                xQueueReceiveFromISR
-                0x0000000000001e62                xQueuePeekFromISR
-                0x0000000000001e90                uxQueueMessagesWaiting
-                0x0000000000001ea0                uxQueueSpacesAvailable
-                0x0000000000001eb4                uxQueueMessagesWaitingFromISR
-                0x0000000000001eba                vQueueDelete
-                0x0000000000001ebe                xQueueIsQueueEmptyFromISR
-                0x0000000000001eca                xQueueIsQueueFullFromISR
- .text          0x0000000000001ed8      0x11e ./FreeRTOS/list.o
-                0x0000000000001ed8                vListInitialise
-                0x0000000000001ef4                vListInitialiseItem
-                0x0000000000001efc                vListInsertEnd
-                0x0000000000001f3e                vListInsert
-                0x0000000000001fae                uxListRemove
- .text          0x0000000000001ff6      0x2b6 ./FreeRTOS/port.o
-                0x0000000000001ff6                pxPortInitialiseStack
-                0x00000000000020ce                xPortStartScheduler
-                0x000000000000213a                vPortEndScheduler
-                0x000000000000213c                vPortYield
-                0x00000000000021ee                vPortYieldFromTick
-                0x00000000000022a6                __vector_7
- .text          0x00000000000022ac       0x86 ./FreeRTOS/heap_1.o
-                0x00000000000022ac                pvPortMalloc
-                0x0000000000002314                vPortFree
-                0x0000000000002316                vPortInitialiseBlocks
-                0x0000000000002320                xPortGetFreeHeapSize
- .text          0x0000000000002332      0x192 ./HAL/LCD/LCD.o
-                0x0000000000002332                enablePulse
-                0x000000000000234e                lcd_writeDataNibble
-                0x000000000000238a                lcd_sendCommand
-                0x00000000000023cc                lcd_init
-                0x0000000000002442                lcd_clearAndHome
-                0x000000000000245c                lcd_sendData
-                0x000000000000249e                lcd_displayString
-                0x00000000000024b6                lcd_goto_line2
-                0x00000000000024bc                lcd_goto
- .text          0x00000000000024c4       0xa4 ./HAL/7SEG/7SEG.o
-                0x00000000000024c4                sevenSeg1_init
-                0x00000000000024cc                sevenSeg1_display_digit
-                0x0000000000002516                sevenSeg2_init
-                0x000000000000251e                sevenSeg2_display_digit
- .text          0x0000000000002568       0x18 ./MCAL/GIE/GIE.o
-                0x0000000000002568                _cli
-                0x000000000000256c                _sei
-                0x0000000000002570                cli
-                0x0000000000002578                sei
- .text          0x0000000000002580      0x26c ./MCAL/DIO/dio.o
-                0x0000000000002580                DIO_vSetPinDirection
-                0x0000000000002608                DIO_vWritePin
-                0x0000000000002690                DIO_vTogglePin
-                0x00000000000026f0                DIO_vSetPortDirection
-                0x0000000000002738                DIO_vWritePort
-                0x0000000000002758                DIO_u8GetPinValue
-                0x000000000000279a                DIO_vTogglePort
-                0x00000000000027ca                DIO_u8GetPortValue
- .text          0x00000000000027ec        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
- .text          0x00000000000027ec        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
- .text          0x00000000000027ec        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
- .text          0x00000000000027ec        0x0 /lib/avr/lib/avr5/libc.a(memcpy.o)
-                0x00000000000027ec                . = ALIGN (0x2)
+ .text          0x0000000000000092       0x64 main2.o
+                0x0000000000000092                lcd_task
+                0x00000000000000c4                lcd_task2
+ .text          0x00000000000000f6     0x153e ./FreeRTOS/tasks.o
+                0x00000000000001f6                xTaskCreate
+                0x000000000000041a                vTaskDelete
+                0x00000000000004d2                vTaskStartScheduler
+                0x0000000000000524                vTaskEndScheduler
+                0x000000000000052e                vTaskSuspendAll
+                0x000000000000053a                xTaskGetTickCount
+                0x000000000000054e                xTaskGetTickCountFromISR
+                0x0000000000000558                uxTaskGetNumberOfTasks
+                0x000000000000055e                pcTaskGetName
+                0x000000000000056e                xTaskIncrementTick
+                0x0000000000000770                xTaskResumeAll
+                0x000000000000090a                xTaskDelayUntil
+                0x0000000000000978                vTaskDelay
+                0x00000000000009a0                xTaskCatchUpTicks
+                0x00000000000009d0                vTaskSwitchContext
+                0x0000000000000a56                vTaskPlaceOnEventList
+                0x0000000000000a76                vTaskPlaceOnUnorderedEventList
+                0x0000000000000afe                xTaskRemoveFromEventList
+                0x0000000000000c56                vTaskRemoveFromUnorderedEventList
+                0x0000000000000d72                vTaskSetTimeOutState
+                0x0000000000000d92                vTaskInternalSetTimeOutState
+                0x0000000000000da8                xTaskCheckForTimeOut
+                0x0000000000000e00                vTaskMissedYield
+                0x0000000000000e08                xTaskGetCurrentTaskHandle
+                0x0000000000000e12                uxTaskResetEventItemValue
+                0x0000000000000e40                ulTaskGenericNotifyTake
+                0x0000000000000f20                xTaskGenericNotifyWait
+                0x0000000000001060                xTaskGenericNotify
+                0x0000000000001226                xTaskGenericNotifyFromISR
+                0x000000000000143e                vTaskGenericNotifyGiveFromISR
+                0x00000000000015a0                xTaskGenericNotifyStateClear
+                0x00000000000015cc                ulTaskGenericNotifyValueClear
+ .text          0x0000000000001634      0x87e ./FreeRTOS/queue.o
+                0x000000000000178a                xQueueGenericReset
+                0x000000000000181a                xQueueGenericCreate
+                0x000000000000186a                xQueueCreateCountingSemaphore
+                0x0000000000001890                xQueueGenericSend
+                0x00000000000019bc                xQueueGenericSendFromISR
+                0x0000000000001a24                xQueueGiveFromISR
+                0x0000000000001a82                xQueueReceive
+                0x0000000000001ba6                xQueueSemaphoreTake
+                0x0000000000001cb2                xQueuePeek
+                0x0000000000001dd6                xQueueReceiveFromISR
+                0x0000000000001e3c                xQueuePeekFromISR
+                0x0000000000001e6a                uxQueueMessagesWaiting
+                0x0000000000001e7a                uxQueueSpacesAvailable
+                0x0000000000001e8e                uxQueueMessagesWaitingFromISR
+                0x0000000000001e94                vQueueDelete
+                0x0000000000001e98                xQueueIsQueueEmptyFromISR
+                0x0000000000001ea4                xQueueIsQueueFullFromISR
+ .text          0x0000000000001eb2      0x11e ./FreeRTOS/list.o
+                0x0000000000001eb2                vListInitialise
+                0x0000000000001ece                vListInitialiseItem
+                0x0000000000001ed6                vListInsertEnd
+                0x0000000000001f18                vListInsert
+                0x0000000000001f88                uxListRemove
+ .text          0x0000000000001fd0      0x2b4 ./FreeRTOS/port.o
+                0x0000000000001fd0                pxPortInitialiseStack
+                0x00000000000020a8                xPortStartScheduler
+                0x0000000000002112                vPortEndScheduler
+                0x0000000000002114                vPortYield
+                0x00000000000021c6                vPortYieldFromTick
+                0x000000000000227e                __vector_7
+ .text          0x0000000000002284       0x86 ./FreeRTOS/heap_1.o
+                0x0000000000002284                pvPortMalloc
+                0x00000000000022ec                vPortFree
+                0x00000000000022ee                vPortInitialiseBlocks
+                0x00000000000022f8                xPortGetFreeHeapSize
+ .text          0x000000000000230a      0x192 ./HAL/LCD/LCD.o
+                0x000000000000230a                enablePulse
+                0x0000000000002326                lcd_writeDataNibble
+                0x0000000000002362                lcd_sendCommand
+                0x00000000000023a4                lcd_init
+                0x000000000000241a                lcd_clearAndHome
+                0x0000000000002434                lcd_sendData
+                0x0000000000002476                lcd_displayString
+                0x000000000000248e                lcd_goto_line2
+                0x0000000000002494                lcd_goto
+ .text          0x000000000000249c       0x5a ./HAL/7SEG/7SEG.o
+                0x000000000000249c                sevenSeg2_init
+                0x00000000000024a4                sevenSeg1_init
+                0x00000000000024a8                sevenSeg2_display_digit
+                0x00000000000024f2                sevenSeg1_display_digit
+ .text          0x00000000000024f6       0x18 ./MCAL/GIE/GIE.o
+                0x00000000000024f6                _cli
+                0x00000000000024fa                _sei
+                0x00000000000024fe                cli
+                0x0000000000002506                sei
+ .text          0x000000000000250e      0x26c ./MCAL/DIO/dio.o
+                0x000000000000250e                DIO_vSetPinDirection
+                0x0000000000002596                DIO_vWritePin
+                0x000000000000261e                DIO_vTogglePin
+                0x000000000000267e                DIO_vSetPortDirection
+                0x00000000000026c6                DIO_vWritePort
+                0x00000000000026e6                DIO_u8GetPinValue
+                0x0000000000002728                DIO_vTogglePort
+                0x0000000000002758                DIO_u8GetPortValue
+ .text          0x000000000000277a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+ .text          0x000000000000277a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+ .text          0x000000000000277a        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+ .text          0x000000000000277a        0x0 /lib/avr/lib/avr5/libc.a(memcpy.o)
+                0x000000000000277a                . = ALIGN (0x2)
  *(.text.*)
- .text.startup  0x00000000000027ec       0xb4 main.o
-                0x00000000000027ec                main
+ .text.startup  0x000000000000277a       0x82 main2.o
+                0x000000000000277a                main
  .text.libgcc.mul
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.div
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
- .text.libgcc   0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+ .text.libgcc   0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.prologue
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.builtins
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.fmul
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.fixed
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  .text.libgcc.mul
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.div
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
- .text.libgcc   0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.prologue
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.builtins
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.fmul
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.fixed
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
  .text.libgcc.mul
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.div
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
- .text.libgcc   0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.prologue
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.builtins
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.fmul
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.libgcc.fixed
-                0x00000000000028a0        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+                0x00000000000027fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
  .text.avr-libc
-                0x00000000000028a0       0x12 /lib/avr/lib/avr5/libc.a(memcpy.o)
-                0x00000000000028a0                memcpy
-                0x00000000000028b2                . = ALIGN (0x2)
+                0x00000000000027fc       0x12 /lib/avr/lib/avr5/libc.a(memcpy.o)
+                0x00000000000027fc                memcpy
+                0x000000000000280e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000000000028b2        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
-                0x00000000000028b2                exit
-                0x00000000000028b2                _exit
+ .fini9         0x000000000000280e        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+                0x000000000000280e                exit
+                0x000000000000280e                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -395,15 +394,15 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000000000028b2        0x4 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+ .fini0         0x000000000000280e        0x4 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
  *(.fini0)
-                0x00000000000028b6                _etext = .
+                0x0000000000002812                _etext = .
 
-.data           0x0000000000800060       0x6e load address 0x00000000000028b6
+.data           0x0000000000800060       0x64 load address 0x0000000000002812
                 0x0000000000800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x0000000000800060        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32.o
- .data          0x0000000000800060        0x0 main.o
+ .data          0x0000000000800060        0x0 main2.o
  .data          0x0000000000800060        0x1 ./FreeRTOS/tasks.o
                 0x0000000000800060                uxTopUsedPriority
  .data          0x0000000000800061        0x0 ./FreeRTOS/queue.o
@@ -424,45 +423,44 @@ END GROUP
  .rodata        0x0000000000800061        0xa ./HAL/7SEG/7SEG.o
  *(.rodata*)
  .rodata.str1.1
-                0x000000000080006b       0x5d main.o
+                0x000000000080006b       0x54 main2.o
  .rodata.str1.1
-                0x00000000008000c8        0x5 ./FreeRTOS/tasks.o
+                0x00000000008000bf        0x5 ./FreeRTOS/tasks.o
  *(.gnu.linkonce.r*)
-                0x00000000008000ce                . = ALIGN (0x2)
- *fill*         0x00000000008000cd        0x1 
-                0x00000000008000ce                _edata = .
-                0x00000000008000ce                PROVIDE (__data_end, .)
+                0x00000000008000c4                . = ALIGN (0x2)
+                0x00000000008000c4                _edata = .
+                0x00000000008000c4                PROVIDE (__data_end, .)
 
-.bss            0x00000000008000ce      0x46e
-                0x00000000008000ce                PROVIDE (__bss_start, .)
+.bss            0x00000000008000c4      0x538
+                0x00000000008000c4                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x00000000008000ce        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32.o
- .bss           0x00000000008000ce        0x3 main.o
- .bss           0x00000000008000d1       0x67 ./FreeRTOS/tasks.o
-                0x00000000008000d1                pxCurrentTCB
- .bss           0x0000000000800138        0x0 ./FreeRTOS/queue.o
- .bss           0x0000000000800138        0x0 ./FreeRTOS/list.o
- .bss           0x0000000000800138        0x0 ./FreeRTOS/port.o
- .bss           0x0000000000800138      0x404 ./FreeRTOS/heap_1.o
- .bss           0x000000000080053c        0x0 ./HAL/LCD/LCD.o
- .bss           0x000000000080053c        0x0 ./HAL/7SEG/7SEG.o
- .bss           0x000000000080053c        0x0 ./MCAL/GIE/GIE.o
- .bss           0x000000000080053c        0x0 ./MCAL/DIO/dio.o
- .bss           0x000000000080053c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
- .bss           0x000000000080053c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
- .bss           0x000000000080053c        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
- .bss           0x000000000080053c        0x0 /lib/avr/lib/avr5/libc.a(memcpy.o)
+ .bss           0x00000000008000c4        0x0 /usr/lib/gcc/avr/5.4.0/../../../avr/lib/avr5/crtatmega32.o
+ .bss           0x00000000008000c4        0x2 main2.o
+ .bss           0x00000000008000c6       0x82 ./FreeRTOS/tasks.o
+                0x00000000008000c6                pxCurrentTCB
+ .bss           0x0000000000800148        0x0 ./FreeRTOS/queue.o
+ .bss           0x0000000000800148        0x0 ./FreeRTOS/list.o
+ .bss           0x0000000000800148        0x0 ./FreeRTOS/port.o
+ .bss           0x0000000000800148      0x4b4 ./FreeRTOS/heap_1.o
+ .bss           0x00000000008005fc        0x0 ./HAL/LCD/LCD.o
+ .bss           0x00000000008005fc        0x0 ./HAL/7SEG/7SEG.o
+ .bss           0x00000000008005fc        0x0 ./MCAL/GIE/GIE.o
+ .bss           0x00000000008005fc        0x0 ./MCAL/DIO/dio.o
+ .bss           0x00000000008005fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_exit.o)
+ .bss           0x00000000008005fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_copy_data.o)
+ .bss           0x00000000008005fc        0x0 /usr/lib/gcc/avr/5.4.0/avr5/libgcc.a(_clear_bss.o)
+ .bss           0x00000000008005fc        0x0 /lib/avr/lib/avr5/libc.a(memcpy.o)
  *(.bss*)
  *(COMMON)
-                0x000000000080053c                PROVIDE (__bss_end, .)
-                0x00000000000028b6                __data_load_start = LOADADDR (.data)
-                0x0000000000002924                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000000008005fc                PROVIDE (__bss_end, .)
+                0x0000000000002812                __data_load_start = LOADADDR (.data)
+                0x0000000000002876                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x000000000080053c        0x0
+.noinit         0x00000000008005fc        0x0
                 [!provide]                        PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                        PROVIDE (__noinit_end, .)
-                0x000000000080053c                _end = .
+                0x00000000008005fc                _end = .
                 [!provide]                        PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
@@ -504,7 +502,7 @@ END GROUP
 
 .comment        0x0000000000000000       0x11
  *(.comment)
- .comment       0x0000000000000000       0x11 main.o
+ .comment       0x0000000000000000       0x11 main2.o
                                          0x12 (size before relaxing)
  .comment       0x0000000000000011       0x12 ./FreeRTOS/tasks.o
  .comment       0x0000000000000011       0x12 ./FreeRTOS/queue.o

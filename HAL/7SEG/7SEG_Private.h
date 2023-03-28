@@ -4,6 +4,6 @@
 #include "../../MCAL/DIO/DIO_REG.h"
 
 #define SEVSEG_PORT PORTC
-#define SEVSEG2_PORT PORTD
+#define SEVSEG2_PORT PORTC
 
 #endif
