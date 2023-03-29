@@ -1,13 +1,14 @@
-mcu1_hal = ./HAL/LCD/LCD.c ./HAL/7SEG/7SEG.c
+# mcu1_hal = ./HAL/LCD/LCD.c  ./HAL/LM35/LM35.c
+mcu1_hal = ./HAL/LCD/LCD.c  
 # mcu1_rtos = ./RTOS/RTOS.c
 mcu1_rtos = ./FreeRTOS/tasks.c ./FreeRTOS/queue.c ./FreeRTOS/list.c ./FreeRTOS/port.c  ./FreeRTOS/heap_1.c  
-# mcu1_mcal = ./MCAL/TIMER/timer.c ./MCAL/GIE/GIE.c ./MCAL/DIO/dio.c
-mcu1_mcal =  ./MCAL/GIE/GIE.c ./MCAL/DIO/dio.c
-# mcu1_lib = ./LIB/Queue/Queue.c
+# mcu1_mcal =  ./MCAL/GIE/GIE.c ./MCAL/DIO/dio.c ./MCAL/ADC/ADC.c
+mcu1_mcal =  ./MCAL/GIE/GIE.c ./MCAL/DIO/dio.c  ./MCAL/UART/UART.c
+mcu1_lib = ./LIB/Queue/Queue.c
 mcu1_app = 
 
 
-SRC = main2.c $(mcu1_app) $(mcu1_rtos) $(mcu1_hal) $(mcu1_mcal) $(mcu1_lib)
+SRC = uart_task.c $(mcu1_app) $(mcu1_rtos) $(mcu1_hal) $(mcu1_mcal) $(mcu1_lib)
 
 
 

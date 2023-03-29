@@ -1,11 +1,11 @@
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef _QUEUE_H
+#define _QUEUE_H
 #include "../Datatypes.h"
 
 // #define QUEUE_MAX_SIZE 64
 #define QUEUE_ERROR_EMPTY 14
 #define QUEUE_ERROR_FULL 15
-#define QUEUE_MAX_SIZE 256
+#define QUEUE_MAX_SIZE 16
 
 typedef struct Queue_Circular
 {

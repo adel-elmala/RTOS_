@@ -4,6 +4,7 @@
     "freertos.h": "c",
     "dio_reg.h": "c",
     "7seg_interface.h": "c",
-    "dio_interface.h": "c"
+    "dio_interface.h": "c",
+    "uart_reg.h": "c"
   }
 }
